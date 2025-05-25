@@ -10,5 +10,5 @@ python main.py
 ```
 
 <p align="center">
-  <img src="https://github.com/MargiPandya27/Image_to_TurtleGraphics/blob/main/model_diagram.svg" alt="Model Diagram">
+  <img src="https://github.com/MargiPandya27/Image_to_TurtleGraphics/blob/main/model_diagram.svg" width="400", alt = Model Diagram>
 </p>
