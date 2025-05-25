@@ -14,17 +14,17 @@ import os
 EpsImagePlugin.gs_windows_binary = r"C:\Program Files\gs\gs10.05.1\bin\gswin64c.exe"
 
 # --- Configure Gemini API ---
-genai.configure(api_key="AIzaSyDgXKQojjiZqdH468J6cP_ZZGedC49RGT4")
+genai.configure(api_key="YOUR_API_KEY")
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 
-# --- Load reference image once ---
+
 image_path = "images/sunflower.jpg"
 with open(image_path, "rb") as f:
     image_bytes = f.read()
 ref_image = Image.open(image_path)
 
-# --- Initial code generation from image ---
+
 response = code_generator(model, image_bytes)
 clean_code = extract_code_from_output(response)
 
@@ -38,24 +38,23 @@ for i in range(3):  # Adjust as needed
     eps_file = f"output/output{i}.eps"
     png_file = f"output/output{i}.png"
 
-    # --- Run the drawing in a new subprocess ---
+
     subprocess.run([
         "python", "draw_and_save.py",
         current_code_file, eps_file, png_file
     ], check=True)
 
-    # --- Evaluate against reference image ---
+    
     turtle_output = Image.open(png_file)
     print("🔍 Evaluating output...")
     feedback = eval(model, ref_image, turtle_output)
 
-    # --- Read current code again ---
+
     code = read_file(current_code_file)
 
-    # --- Get corrected code ---
+   
     corrected_code = get_corrected_code(model, code, feedback)
 
-    # --- Save corrected code to new file ---
     current_code_file = f"corrected_output{i + 1}.py"
     with open(current_code_file, "w", encoding="utf-8") as f:
         f.write(corrected_code)
