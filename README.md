@@ -8,3 +8,7 @@ Clone the repository.
 ```bash
 python main.py
 ```
+
+<p align="center">
+  <img src="https://github.com/MargiPandya27/Image_to_TurtleGraphics/blob/main/model_diagram.svg" alt="Model Diagram">
+</p>
