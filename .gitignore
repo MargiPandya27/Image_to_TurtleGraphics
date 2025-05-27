@@ -1,0 +1,6 @@
+extracted_code.py
+*.eps
+*.png
+output/
+__pycache__/
+corrected_output*.py
