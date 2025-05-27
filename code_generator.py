@@ -6,8 +6,8 @@ import json
 def code_generator(model, image_bytes):
     prompt = f"""
             User: we will create a flower with more intricate petals and leaves. The petals have different shapes and curves and we will add green leaves around the flower to enhance its appearance.
-            AI: # Draw a Sunflower in Python Using Turtle
-
+            Assistant: 
+            # Draw a Sunflower in Python Using Turtle
 
             # import math and turtle
             import math
@@ -60,9 +60,10 @@ def code_generator(model, image_bytes):
             User: Take the given image and generate the turtle code to generate the turtle graphics. 
 
             Make sure that the order of all the object are correct so none of them overlap. Generate only the code.  Add code to inject EPS saving into the code itself with file name as output.eps:
-        canvas = turtle.getcanvas()
-        canvas.postscript(file="output.eps") in the end. 
-
+            canvas = turtle.getcanvas()
+            canvas.postscript(file="output.eps") in the end. 
+            
+            Assistant:
             """ 
 
 

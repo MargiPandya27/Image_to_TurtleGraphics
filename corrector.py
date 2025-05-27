@@ -9,21 +9,22 @@ def read_file(path: str) -> str:
 
 def get_corrected_code(model, code: str, feedback: str) -> str:
     prompt = f"""
-        You're a Python Turtle Graphics expert helping debug and improve turtle-based drawing code. Firstly, understand the {feedback} given by the evaluator and identify the part of original code where it has to be modified in the original code.
-        If everything is good, then don't change the code.
-
+        You're a Python Turtle Graphics expert helping debug and improve turtle-based drawing code. Firstly, understand the feedback provided below given by the evaluator \
+        and identify what parts of the original code need to be modified. If no changes are necessary, simply rewrite the original code.
+        
+        Feedback:
+        {feedback}
         ---
 
-        🖼️ The original code:
+        The original code:
         ```python
         {code}
 
-        Import all the necessary libraries and check for bugs. Please return the corrected code ONLY, inside triple backticks. Add code to inject EPS saving into the code itself with file name as output1.eps:
+        Import all the necessary libraries and ensure the code is bug free. Please return the corrected code ONLY, inside triple backticks. Add code to inject EPS saving into the code itself with file name as output1.eps:
         canvas = turtle.getcanvas()
-        canvas.postscript(file="output1.eps") in the end. Note: you can generator new code if the output is not good at all.
+        canvas.postscript(file="output1.eps") in the end. \
+        Note: you can generate new code if the output is not good at all.
         """
     
     response = model.generate_content(prompt)
     return extract_code_from_output(response.text)
-
-
