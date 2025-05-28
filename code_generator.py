@@ -5,61 +5,109 @@ import json
 
 def code_generator(model, image_bytes):
     prompt = f"""
-            User: we will create a flower with more intricate petals and leaves. The petals have different shapes and curves and we will add green leaves around the flower to enhance its appearance.
+            User: Using turtle graphics in python, draw an image of a black and yellow striped bumblebee that is floating through the sky.
+            Generate only the code.
+            Add code to inject EPS saving into the code itself with file name as output.eps:
+            canvas = turtle.getcanvas()
+            canvas.postscript(file="output.eps") in the end.
+            
             Assistant: 
-            # Draw a Sunflower in Python Using Turtle
-
-            # import math and turtle
-            import math
+            # Necessary Imports
             import turtle
 
-            tina = turtle.Turtle()
-            tina.shape("turtle")
-            tina.color("black")
-            tina.speed(0)
+            # Setup screen
+            screen = turtle.Screen()
+            screen.setup(width=800, height=600)
+            screen.bgcolor("skyblue")
+            turtle.speed(0)
+            turtle.hideturtle()
 
-            def drawSunflower(t, numseeds, numpetals, angle, cspread):
-                t.fillcolor("orange")
-                phi = angle * (math.pi / 180.0)
-            
-                for i in range (numseeds + numpetals):
-                # figure out the next x, y position
-                r = cspread * math.sqrt(i)
-                theta = i * phi
-                x = r * math.cos(theta)
-                y = r * math.sin(theta)
+            # Draw body
+            body = turtle.Turtle()
+            body.hideturtle()
+            body.penup()
+            body.shape("circle")
+            body.color("black", "yellow")
+            body.shapesize(stretch_wid=3, stretch_len=5)
+            body.goto(0, 0)
+            body.stamp()
 
-                # move the turtle and orient it correctly
-                t.penup()
-                t.goto(x, y)
-                t.setheading(i * angle)
-                t.pendown()
+            # Draw black stripes
+            stripe = turtle.Turtle()
+            stripe.hideturtle()
+            stripe.penup()
+            stripe.shape("circle")
+            stripe.color("black")
+            stripe.shapesize(stretch_wid=3, stretch_len=1)
+            for x in [-30, 0, 30]:
+                stripe.goto(x, 0)
+                stripe.stamp()
 
-                if i <  numseeds:
-                    t.stamp()
-                else:
-                    drawPetal(t)
-                    
-            def drawPetal(t):
-                t.fillcolor("yellow")
-                t.begin_fill()
-                t.right(20)
-                t.forward(70)
-                t.left(40)
-                t.forward(70)
-                t.left(140)
-                t.forward(70)
-                t.left(40)
-                t.forward(70)
-                t.end_fill()
+            # Draw head
+            head = turtle.Turtle()
+            head.hideturtle()
+            head.penup()
+            head.shape("circle")
+            head.color("black")
+            head.shapesize(stretch_wid=2, stretch_len=2)
+            head.goto(-60, 0)
+            head.stamp()
 
-            drawSunflower(tina, 160, 40, 137.508, 4)
+            # Draw eyes
+            eye = turtle.Turtle()
+            eye.hideturtle()
+            eye.penup()
+            for xpos in [-70, -50]:
+                # white part
+                eye.goto(xpos, 10)
+                eye.color("white")
+                eye.shapesize(stretch_wid=0.5, stretch_len=0.5)
+                eye.stamp()
+                # pupil
+                eye.color("black")
+                eye.shapesize(stretch_wid=0.2, stretch_len=0.2)
+                eye.stamp()
 
-            tina.hideturtle()
+            # Draw antennae
+            ant = turtle.Turtle()
+            ant.hideturtle()
+            ant.penup()
+            ant.color("black")
+            ant.goto(-60, 20)
+            ant.pendown()
+            ant.setheading(120)
+            ant.forward(40)
+            ant.dot(8)
+            ant.penup()
+            ant.goto(-60, 20)
+            ant.pendown()
+            ant.setheading(60)
+            ant.forward(40)
+            ant.dot(8)
+
+            # Draw wings
+            wing = turtle.Turtle()
+            wing.hideturtle()
+            wing.penup()
+            wing.shape("circle")
+            wing.color("black", "lightblue")
+            wing.shapesize(stretch_wid=3, stretch_len=2)
+            for pos in [(-10, 60), (30, 60)]:
+                wing.goto(pos)
+                wing.stamp()
+
+            # Save as EPS
+            canvas = turtle.getcanvas()
+            canvas.postscript(file="output.eps")
+
+            turtle.done()
+
 
             User: Take the given image and generate the turtle code to generate the turtle graphics. 
 
-            Make sure that the order of all the object are correct so none of them overlap. Generate only the code.  Add code to inject EPS saving into the code itself with file name as output.eps:
+            Try and match the generated image to the original image as closely as possible. 
+            Generate only the code.  
+            Add code to inject EPS saving into the code itself with file name as output.eps:
             canvas = turtle.getcanvas()
             canvas.postscript(file="output.eps") in the end. 
             

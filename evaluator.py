@@ -7,11 +7,10 @@ def eval(model, ref_image, screenshot_image):
 
     # Send prompt + images
     response = model.generate_content([
-        "You're comparing two images. The first is the reference (real image), and the second is a turtle graphics drawing done in Python. \
-        Concisely describe any major discrepancies between the original image and the generated graphic, focusing on what should be added, \
-        deleted, or modified to try and make the graphic representation closer to the actual image. Keep in mind the limitations of drawing \
-        with such a software (DO NOT ASK for minute details like texture, shading, variation in size and color, complicated patterns etc). \
-        Keep the output as simple as possible while making sure it captures the overall theme of the original image.",
+        "You are comparing two images. The first is the reference (real image), and the second is a turtle graphics drawing done in Python.\
+        Point out one or two major errors that might exist between the two images, ignoring finer details that would be difficult to \
+        execute in a program (like texture, small details, etc.). Make sure you structure your output in such a way that someone reading \
+        it could easily modify the program they wrote to generate the graphic. Keep your descriptions and advice short and concise ",
         ref_image,
         screenshot_image
     ])
