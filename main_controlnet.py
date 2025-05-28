@@ -21,7 +21,7 @@ from corrector_controlnet import get_generated_code_from_images
 EpsImagePlugin.gs_windows_binary = r"C:\Program Files\gs\gs10.05.1\bin\gswin64c.exe"
 
 # --- Configure Gemini API ---
-genai.configure(api_key="AIzaSyB8IeHPkLNjRnrmIi6Js-EjWddQsMx_7gY")
+genai.configure(api_key="GOOGLE_API_KEY")
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 # Extract image bytes
