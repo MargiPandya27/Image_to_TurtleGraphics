@@ -14,7 +14,7 @@ import os
 EpsImagePlugin.gs_windows_binary = r"C:\Program Files\gs\gs10.05.1\bin\gswin64c.exe"
 
 # --- Configure Gemini API ---
-genai.configure(api_key="AIzaSyDgXKQojjiZqdH468J6cP_ZZGedC49RGT4")
+genai.configure(api_key="GOOGLE_API_KEY")
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 
