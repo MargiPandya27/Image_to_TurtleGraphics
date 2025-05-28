@@ -9,21 +9,29 @@ def read_file(path: str) -> str:
 
 def get_corrected_code(model, code: str, feedback: str) -> str:
     prompt = f"""
-        You're a Python Turtle Graphics expert helping debug and improve turtle-based drawing code. Firstly, understand the feedback provided below given by the evaluator \
-        and identify what parts of the original code need to be modified. If no changes are necessary, simply rewrite the original code.
-        
-        Feedback:
-        {feedback}
-        ---
+        You are a Python Turtle Graphics expert. Your task is to review and improve the following turtle drawing code based on evaluator feedback. 
 
-        The original code:
+        ## Feedback:
+        {feedback}
+
+        ## Original Code:
         ```python
         {code}
 
-        Import all the necessary libraries and ensure the code is bug free. Please return the corrected code ONLY, inside triple backticks. Add code to inject EPS saving into the code itself with file name as output1.eps:
-        canvas = turtle.getcanvas()
-        canvas.postscript(file="output1.eps") in the end. \
-        Note: you can generate new code if the output is not good at all.
+
+       Instructions:
+        Carefully read the feedback and understand what visual changes are needed.
+
+        Modify the original code only to reflect those changes.
+
+        Import all necessary libraries.
+
+        Ensure the code is syntactically correct and runs without errors.
+
+        At the very end of the code, inject this EPS export step:canvas = turtle.Screen.getcanvas()
+            canvas.postscript(file="output1.eps"). 
+        3. Don't use 'darkbrown' use brown color and not the shades. Try making the petals around the center. so the center should come first and then the petals around it. Also the center should be visible.
+
         """
     
     response = model.generate_content(prompt)

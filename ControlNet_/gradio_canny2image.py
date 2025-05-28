@@ -13,10 +13,10 @@ from cldm.ddim_hacked import DDIMSampler
 
 # Initialize Canny detector and model
 apply_canny = CannyDetector()
-model = create_model('ControlNet_/models/cldm_v15.yaml').cpu()
-model.load_state_dict(load_state_dict('ControlNet_/models/control_sd15_canny.pth', location='cpu'), strict=False)
-# model = model.cuda()
-model.cond_stage_model.device = torch.device('cpu') 
+model = create_model('./models/cldm_v15.yaml').cpu()
+model.load_state_dict(load_state_dict('./models/control_sd15_canny.pth', location='cpu'), strict=False)
+model = model.cuda()
+# model.cond_stage_model.device = torch.device('cpu') 
 ddim_sampler = DDIMSampler(model)
 
 def process(input_image, prompt, a_prompt, n_prompt, num_samples, image_resolution, ddim_steps, guess_mode, strength, scale, seed, eta, low_threshold, high_threshold):
@@ -27,8 +27,8 @@ def process(input_image, prompt, a_prompt, n_prompt, num_samples, image_resoluti
         detected_map = apply_canny(img, low_threshold, high_threshold)
         detected_map = HWC3(detected_map)
 
-        # control = torch.from_numpy(detected_map.copy()).float().cuda() / 255.0
-        control = torch.from_numpy(detected_map.copy()).float() / 255.0
+        control = torch.from_numpy(detected_map.copy()).float().cuda() / 255.0
+        # control = torch.from_numpy(detected_map.copy()).float() / 255.0
         control = torch.stack([control for _ in range(num_samples)], dim=0)
         control = einops.rearrange(control, 'b h w c -> b c h w').clone()
 
@@ -55,7 +55,7 @@ def process(input_image, prompt, a_prompt, n_prompt, num_samples, image_resoluti
 # --- Main script ---
 
 # Load your image (change the path as needed)
-input_path = "Screenshot1.png"
+input_path = "/content/drive/MyDrive/CSE_252D/Image_to_TurtleGraphics/images/beach.jpg"
 input_image = np.array(Image.open(input_path).convert("RGB"))
 
 # Set your prompts and parameters
