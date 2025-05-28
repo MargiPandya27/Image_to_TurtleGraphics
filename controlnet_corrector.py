@@ -5,7 +5,7 @@ from io import BytesIO
 import base64
 
 # === SETUP GOOGLE GENERATIVE AI ===
-os.environ["GOOGLE_API_KEY"] = "AIzaSyB8IeHPkLNjRnrmIi6Js-EjWddQsMx_7gY"
+os.environ["GOOGLE_API_KEY"] = "GOOGLE_API_KEY"
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 # === Create Model Instance ===
