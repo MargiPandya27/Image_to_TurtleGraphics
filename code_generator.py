@@ -78,7 +78,52 @@ def code_generator(model, image_bytes, query):
             2. canvas.postscript(file="output.eps") in the end. 
             3. Don't use 'darkbrown' use basic color and not the shades. Try making the petals around the center. so the center should come first and then the petals around it. Also the center should be visible.
 
-            Assistant:
+            Use any of the following functions that are useful:
+            def draw_sunflower_petal(t: turtle.Turtle, radius: float, angle: float) -> None:
+    '    Draws a single petal using two arcs.
+    
+    Parameters:
+    - t: the Turtle instance
+    - radius: radius of the arc for each half of the petal
+    - angle: the angle (in degrees) that each arc spans
+    '
+    # Each petal is made of two identical arcs
+    for _ in range(2):
+        t.circle(radius, angle)
+        t.left(180 - angle)
+
+     def draw_rose_petal(t: turtle.Turtle, radius: float, angle: float) -> None:
+    '
+    Draws a single rose petal by tracing two symmetric arcs.
+    Compared to the sunflower petal, we use a smaller arc‐angle
+    and a slightly different radius so the petal comes to a softer point.
+    
+    Parameters:
+    - t: the Turtle instance
+    - radius: radius of each half‐arc
+    - angle: angle (in degrees) that each half‐arc spans
+    '
+    # One petal = two arcs that meet at a sharp point
+    for _ in range(2):
+        t.circle(radius, angle)
+        t.left(180 - angle)       
+        def draw_daisy_petal(t: turtle.Turtle, radius: float, angle: float) -> None:
+    '
+    Draws a single daisy petal using two symmetric arcs.
+    Compared to sunflower/rose petals, daisy petals are longer and narrower,
+    so we use a larger radius and a smaller sweep‐angle to achieve that shape.
+    
+    Parameters:
+    - t: the Turtle instance
+    - radius: radius for each half‐arc of the petal
+    - angle: angle (in degrees) for each half‐arc
+    '
+    # Each petal is two arcs meeting at a pointed tip
+    for _ in range(2):
+        t.circle(radius, angle)       # draw an arc of length 'angle'° with given radius
+        t.left(180 - angle)           # pivot to start the second half of the petal
+
+    Assistant:
 
             """ 
 
