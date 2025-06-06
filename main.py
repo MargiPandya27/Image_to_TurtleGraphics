@@ -3,18 +3,23 @@ from code_generator import code_generator
 from parse import extract_code_from_output
 from evaluator import eval
 from corrector import read_file, get_corrected_code
+from controlnet_scribble import load_scribble, get_pipeline
 
 import subprocess
 from PIL import Image
 from PIL import EpsImagePlugin
 import turtle
 import os
+import torch
+from diffusers import StableDiffusionControlNetPipeline, ControlNetModel
+from diffusers import UniPCMultistepScheduler
+import numpy as np
 
 # --- Configure Ghostscript for Pillow EPS conversion ---
 EpsImagePlugin.gs_windows_binary = r"C:\Program Files\gs\gs10.05.1\bin\gswin64c.exe"
 
 # --- Configure Gemini API ---
-genai.configure(api_key="GOOGLE_API_KEY")
+genai.configure(api_key="AIzaSyDjweutre1QSV0ZFuk6PgyKUN7gBNRNN5g")
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 
@@ -62,3 +67,18 @@ for i in range(5):  # Adjust as needed
     current_code_file = f"corrected_output{i + 1}.py"
     with open(current_code_file, "w", encoding="utf-8") as f:
         f.write(corrected_code)
+        
+print(" Running ControlNet ...")
+pipe = get_pipeline()
+scribble_image = load_scribble("output/output4.png")
+output_images = pipe(
+    prompt="oil painting of daisy flower, impressionist style, soft brushstrokes, warm natural lighting, garden setting, classical botanical art, museum quality",
+    image=scribble_image,
+    num_inference_steps=30,
+    guidance_scale=5.0,
+    negative_prompt=None,
+    controlnet_conditioning_scale=0.3,
+).images
+
+output_images[0].save("generated_image.png")
+print("Generation complete. Saved to generated_image.png")
