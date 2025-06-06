@@ -14,6 +14,7 @@ import torch
 from diffusers import StableDiffusionControlNetPipeline, ControlNetModel
 from diffusers import UniPCMultistepScheduler
 import numpy as np
+import sys
 
 # --- Configure Ghostscript for Pillow EPS conversion ---
 EpsImagePlugin.gs_windows_binary = r"C:\Program Files\gs\gs10.05.1\bin\gswin64c.exe"
@@ -24,7 +25,7 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 
 # --- Load reference image once ---
-image_path = "images/daisy.jpg"
+image_path = sys.argv[1]
 with open(image_path, "rb") as f:
     image_bytes = f.read()
 ref_image = Image.open(image_path)
@@ -72,12 +73,12 @@ print(" Running ControlNet ...")
 pipe = get_pipeline()
 scribble_image = load_scribble("output/output4.png")
 output_images = pipe(
-    prompt="oil painting of daisy flower, impressionist style, soft brushstrokes, warm natural lighting, garden setting, classical botanical art, museum quality",
+    prompt="oil painting of a flower, impressionist style, soft brushstrokes, warm natural lighting, garden setting, classical botanical art, museum quality",
     image=scribble_image,
     num_inference_steps=30,
     guidance_scale=5.0,
     negative_prompt=None,
-    controlnet_conditioning_scale=0.3,
+    controlnet_conditioning_scale=2.3,
 ).images
 
 output_images[0].save("generated_image.png")
