@@ -19,7 +19,7 @@ import numpy as np
 EpsImagePlugin.gs_windows_binary = r"C:\Program Files\gs\gs10.05.1\bin\gswin64c.exe"
 
 # --- Configure Gemini API ---
-genai.configure(api_key="AIzaSyDjweutre1QSV0ZFuk6PgyKUN7gBNRNN5g")
+genai.configure(api_key="Create Your API")
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 
