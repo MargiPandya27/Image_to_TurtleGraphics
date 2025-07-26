@@ -1,8 +1,8 @@
-# 🐢 Image-to-Turtle Graphics Generator
+# Image-to-Turtle Graphics Generator
 
 A sophisticated multi-agent AI system that transforms input images into Python Turtle Graphics code through intelligent analysis, iterative rendering, evaluation, and correction. The system uses computer vision, AI-powered code generation, and ControlNet for enhanced image processing.
 
-## 🌟 Features
+## Features
 
 - **AI-Powered Code Generation**: Uses Google Gemini to analyze images and generate initial Turtle Graphics code
 - **Iterative Improvement**: Multi-step evaluation and correction process for better accuracy
@@ -11,7 +11,7 @@ A sophisticated multi-agent AI system that transforms input images into Python T
 - **Automatic EPS/PNG Export**: Built-in support for high-quality image export
 - **Multi-Image Support**: Works with various image types (flowers, landscapes, objects)
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 The system consists of several interconnected components:
 
@@ -29,7 +29,7 @@ The system consists of several interconnected components:
 - **Multi-iteration Pipeline**: Up to 5 iterations for optimal results
 - **GhostScript Integration**: High-quality EPS to PNG conversion
 
-## 📋 Prerequisites
+## Prerequisites
 
 ### Required Software
 - **Python 3.8+**
@@ -39,7 +39,7 @@ The system consists of several interconnected components:
 ### API Keys
 - **Google Gemini API Key**: Required for AI-powered code generation
 
-## 🚀 Installation
+## Installation
 
 1. **Clone the repository**
    ```bash
@@ -63,7 +63,7 @@ The system consists of several interconnected components:
    - Replace `"Create Your API"` in `main.py` with your actual Gemini API key
    - Or set it as an environment variable
 
-## 🎯 Usage
+## Usage
 
 ### Basic Usage
 
@@ -90,7 +90,7 @@ python main_controlnet.py
 5. **Correction**: Code is iteratively improved based on feedback
 6. **Output**: Final optimized Turtle Graphics code and rendered image
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Image_to_TurtleGraphics/
@@ -112,7 +112,7 @@ Image_to_TurtleGraphics/
 └── ControlNet_/           # ControlNet framework files
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### GhostScript Path
 Update the GhostScript binary path in these files:
@@ -130,7 +130,7 @@ Modify ControlNet parameters in `controlnet_scribble.py`:
 - Device selection (CPU/GPU)
 - Inference parameters
 
-## 📊 Output Files
+## Output Files
 
 The system generates several output files:
 
@@ -140,14 +140,14 @@ The system generates several output files:
 - `output/output{i}.png`: PNG format drawings
 - `generated_image.png`: Final ControlNet-enhanced result
 
-## 🎨 Supported Image Types
+## Supported Image Types
 
 The system works best with:
 - **Flowers**: Sunflowers, roses, daisies, tulips
 - **Simple Objects**: Geometric shapes, basic drawings
 - **Landscapes**: Simple scenes with clear structures
 
-## 🔍 How It Works
+## How It Works
 
 ### 1. Image Analysis
 The AI analyzes the input image using computer vision techniques to identify:
@@ -177,7 +177,7 @@ For advanced processing:
 - Apply ControlNet for enhanced generation
 - Generate improved artistic versions
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -203,7 +203,7 @@ For advanced processing:
 - Enable GPU acceleration for ControlNet features
 - Adjust iteration count based on complexity needs
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -211,18 +211,18 @@ For advanced processing:
 4. Add tests if applicable
 5. Submit a pull request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Google Gemini for AI-powered code generation
 - ControlNet framework for advanced image processing
 - Python Turtle Graphics for drawing capabilities
 - Pillow and GhostScript for image processing
 
-## 📞 Support
+## Support
 
 For issues and questions:
 - Open an issue on GitHub
@@ -231,4 +231,4 @@ For issues and questions:
 
 ---
 
-**Note**: This system works best with simple, well-defined images. Complex photographs may require multiple iterations or manual adjustments for optimal results.
+**Note**: This system works best with simple, well-defined images of flowers only. Complex photographs of other objects may require multiple iterations or manual adjustments for optimal results.
