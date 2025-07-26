@@ -2,7 +2,9 @@
 
 A sophisticated multi-agent AI system that transforms input images into Python Turtle Graphics code through intelligent analysis, iterative rendering, evaluation, and correction. The system uses computer vision, AI-powered code generation, and ControlNet for enhanced image processing.
 
-<img src="https://github.com/MargiPandya27/Image_to_TurtleGraphics/blob/main/model_diagram.svg" alt="Model Architecture" width="60"/>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/MargiPandya27/Image_to_TurtleGraphics/main/model_diagram.svg" alt="Model Architecture" style="width:70%;"/>
+</div>
 
 
 
