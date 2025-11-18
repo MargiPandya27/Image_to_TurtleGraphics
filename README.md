@@ -209,32 +209,12 @@ For advanced processing:
 - Enable GPU acceleration for ControlNet features
 - Adjust iteration count based on complexity needs
 
-## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
 
-- Google Gemini for AI-powered code generation
-- ControlNet framework for advanced image processing
-- Python Turtle Graphics for drawing capabilities
-- Pillow and GhostScript for image processing
-
-## Support
-
-For issues and questions:
-- Open an issue on GitHub
-- Check the troubleshooting section
-- Review the code comments for implementation details
-
----
 
 **Note**: This system works best with simple, well-defined images of flowers only. Complex photographs of other objects may require multiple iterations or manual adjustments for optimal results.
